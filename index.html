@@ -2,16 +2,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ted's Image Gen 1.0</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Art Prompt Enhancer</title>
+  <style>
+    /* Background gradient */
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #2a2a3b);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: #f0f0f0;
+    }
+
+    /* Image styling */
+    img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      animation: fadeIn 1.5s ease;
+    }
+
+    /* Title */
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5em;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: fadeIn 2s ease;
+    }
+
+    /* Glass effect container */
+    .glass-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 20px;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeInUp 1s ease;
+    }
+
+    /* Textareas and button */
+    textarea, button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 12px;
+      border: none;
+      resize: none;
+    }
+    textarea {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    button {
+      cursor: pointer;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Ted's Image Gen 1.0</h1>
-    <p>Welkom in de wereld van AI & cyberpunk visuals.</p>
-    <img src="cyberpunk.jpg" alt="Cyberpunk scene" />
+
+  <!-- Main Picture -->
+  <img src="your-image.jpg" alt="Beautiful Art">
+
+  <!-- Title -->
+  <h1>Prompt Enhancer</h1>
+
+  <!-- Frosted Glass Box -->
+  <div class="glass-box">
+    <textarea id="basicIdea" rows="3" placeholder="Type your simple idea here..."></textarea>
+    <button onclick="enhancePrompt()">Enhance Prompt</button>
+    <textarea id="enhancedPrompt" rows="5" placeholder="Enhanced prompt will appear here..." readonly></textarea>
   </div>
+
+  <script>
+    function enhancePrompt() {
+      const basicIdea = document.getElementById('basicIdea').value.trim();
+
+      if (basicIdea === "") {
+        alert("Please type something first!");
+        return;
+      }
+
+      // Fake enhancement for now
+      const enhanced = `An extraordinary, high-definition illustration of ${basicIdea}, vivid colors, cinematic lighting, hyper-realistic details, masterpiece style, trending on ArtStation, 8K resolution.`;
+
+      document.getElementById('enhancedPrompt').value = enhanced;
+    }
+  </script>
+
 </body>
 </html>
